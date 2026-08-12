@@ -17,3 +17,11 @@ devem ser executados **manualmente, em ordem**, no **SQL Editor** do dashboard d
 
 - `0000_common.sql` — funções utilitárias compartilhadas (ex.: trigger de `updated_at`).
 - `0001_create_imoveis.sql` — tabela `imoveis` + Row Level Security (RLS).
+
+## Configuração de Auth necessária
+
+Para que o fluxo de cadastro (Fluxo 1 do PRD) redirecione direto para o dashboard sem exigir
+confirmação de e-mail, desabilite a opção **"Confirm email"** em
+**Authentication → Providers → Email** no dashboard do Supabase. Se preferir manter a confirmação
+de e-mail ativada, o cadastro funcionará normalmente, mas o usuário será redirecionado para
+`/login` com uma mensagem pedindo para confirmar o e-mail antes de entrar.
