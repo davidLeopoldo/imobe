@@ -8,14 +8,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { PainelMobileNav } from "./painel-mobile-nav";
 
 export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
   return (
     <header className="border-b">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
-        <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
-          Imobe
-        </Link>
+        <div className="flex items-center gap-2">
+          <PainelMobileNav />
+          <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
+            Imobe
+          </Link>
+        </div>
 
         <DropdownMenu>
           <DropdownMenuTrigger className="rounded-full outline-none focus-visible:ring-2 focus-visible:ring-ring">

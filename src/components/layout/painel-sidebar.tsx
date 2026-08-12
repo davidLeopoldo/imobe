@@ -1,16 +1,11 @@
 import Link from "next/link";
-import { Home, Building2 } from "lucide-react";
-
-const NAV_ITEMS = [
-  { href: "/dashboard", label: "Dashboard", icon: Home },
-  { href: "/imoveis", label: "Imóveis", icon: Building2 },
-] as const;
+import { PAINEL_NAV_ITEMS } from "./nav-items";
 
 export function PainelSidebar() {
   return (
     <aside className="hidden w-56 shrink-0 border-r sm:block">
       <nav className="flex flex-col gap-1 p-4">
-        {NAV_ITEMS.map(({ href, label, icon: Icon }) => (
+        {PAINEL_NAV_ITEMS.map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
             href={href}
