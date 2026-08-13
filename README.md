@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Imobe
 
-## Getting Started
+Micro-SaaS de gestão de imóveis, contratos e patrimônio — para proprietários
+que alugam/vendem imóveis e corretores autônomos.
 
-First, run the development server:
+Cada usuário enxerga e gerencia apenas seus próprios imóveis, contratos e
+recebimentos (isolamento garantido via Row-Level Security no Postgres).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## Documentação
+
+- **[PRD](docs/PRD-Imobe-v1.md)** — visão geral, funcionalidades, regras de
+  negócio, fluxos, critérios de aceite e fases de construção.
+- **[ADRs](docs/adr/)** — decisões de arquitetura e seus porquês.
+- **[Regras do projeto](.claude/rules/)** — convenções seguidas pela IA e pelo
+  time ao gerar código.
+
+## Stack
+
+- **Front-end:** Next.js 16 (App Router) + TypeScript + TailwindCSS
+- **Back-end:** rotas de servidor do próprio Next.js (sem servidor separado)
+- **Banco de dados / Auth / Storage:** Supabase (Postgres + RLS)
+- **UI:** Base UI + componentes locais em `src/components/ui`
+- **Dados assíncronos:** TanStack Query
+- **Validação:** Zod
+
+## Estrutura do projeto
+
+```
+src/
+  app/
+    (public)/     → rotas públicas: landing, login, cadastro
+    (painel)/     → rotas privadas: dashboard, imóveis (protegidas via proxy.ts)
+  components/
+    layout/        → header, sidebar, navegação mobile
+    imoveis/        → componentes específicos de imóveis
+    ui/              → componentes base reutilizáveis
+  lib/
+    supabase/       → clients (browser, server, middleware)
+    validations/    → schemas Zod
+  services/          → lógica de negócio compartilhada entre features
+supabase/            → SQL de schema, versionado e numerado
+docs/                → PRD e ADRs
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Cada rota de feature (ex: `imoveis/`) segue o padrão de colocation definido em
+[`.claude/rules/page-rules.md`](.claude/rules/page-rules.md): `_components/`,
+`_actions/` (Server Actions) e `_data-access/` (DAL) vivem dentro da própria
+pasta da rota.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Rodando localmente
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+cp .env.example .env.local   # preencher com as credenciais do seu projeto Supabase
+npm run dev
+```
 
-## Learn More
+Abra [http://localhost:3000](http://localhost:3000).
 
-To learn more about Next.js, take a look at the following resources:
+### Banco de dados
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+O schema fica em `supabase/`, numerado em ordem de execução. Rode cada arquivo
+`.sql` manualmente no **SQL Editor** do dashboard do Supabase, na ordem
+numérica (`0000_...`, `0001_...`, ...).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Escopo da V1
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Consulte a seção "Funcionalidades" e "Fora do escopo" do
+[PRD](docs/PRD-Imobe-v1.md) para o que está e o que não está incluído nesta
+versão.
