@@ -1,14 +1,7 @@
 import { z } from "zod";
+import { optionalMoneyString } from "./money";
 
-const optionalMoneyString = z
-  .string()
-  .optional()
-  .refine((val) => !val || /^\d+(\.\d{1,2})?$/.test(val), {
-    error: "Informe um valor válido (ex.: 1500.00).",
-  })
-  .refine((val) => !val || Number(val) > 0, {
-    error: "Informe um valor maior que zero.",
-  });
+export { optionalMoneyString, paraNumeroOuNulo } from "./money";
 
 export const imovelSchema = z
   .object({
@@ -51,7 +44,3 @@ export const imovelSchema = z
   });
 
 export type ImovelFormValues = z.infer<typeof imovelSchema>;
-
-export function paraNumeroOuNulo(valor: string | undefined): number | null {
-  return valor ? Number(valor) : null;
-}

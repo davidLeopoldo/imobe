@@ -3,6 +3,7 @@ import { Card, CardAction, CardContent, CardHeader, CardTitle } from "@/componen
 import { formatCurrencyBRL } from "@/lib/format";
 import type { Imovel } from "@/services/imoveis-service";
 import { StatusBadge } from "./status-badge";
+import { TipoImovelBadge } from "./tipo-imovel-badge";
 
 export function ImovelCard({ imovel }: { imovel: Imovel }) {
   return (
@@ -15,8 +16,9 @@ export function ImovelCard({ imovel }: { imovel: Imovel }) {
               {imovel.bairro}, {imovel.cidade}
             </span>
           </CardTitle>
-          <CardAction>
+          <CardAction className="flex flex-col items-end gap-1">
             <StatusBadge status={imovel.status} />
+            <TipoImovelBadge paraVenda={imovel.para_venda} paraAluguel={imovel.para_aluguel} />
           </CardAction>
         </CardHeader>
         <CardContent className="flex flex-col gap-1 text-sm">

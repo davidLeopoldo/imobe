@@ -1,4 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
+import { requireUserId } from "@/lib/supabase/auth";
 
 export type ImovelStatus = "disponivel" | "indisponivel" | "alugado" | "vendido";
 
@@ -34,7 +35,8 @@ export type ImovelInput = Pick<
   | "bairro"
   | "cidade"
   | "link_anuncio"
->;
+> &
+  Partial<Pick<Imovel, "status">>;
 
 export async function listarImoveisDoUsuario() {
   const supabase = await createClient();
@@ -61,12 +63,7 @@ export async function buscarImovelPorId(id: number) {
 
 export async function criarImovel(input: ImovelInput) {
   const supabase = await createClient();
-  const { data: claimsData, error: claimsError } = await supabase.auth.getClaims();
-  const userId = claimsData?.claims?.sub;
-
-  if (claimsError || !userId) {
-    throw new Error("Usuário não autenticado.");
-  }
+  const userId = await requireUserId(supabase);
 
   const { data, error } = await supabase
     .from("imoveis")
