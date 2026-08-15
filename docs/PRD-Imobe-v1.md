@@ -6,6 +6,7 @@
 |--------|------------|-------|---------------------------------------------|
 | 1.0    | 2026-08-09 | —     | PRD inicial: problema, funcionalidades, regras, fluxos, critérios de aceite, fora do escopo, stack em alto nível, métricas de sucesso e riscos/premissas. |
 | 1.1    | 2026-08-10 | —     | Adicionada seção "Fases de Construção" (ordem de implementação da V1, dividida em fases com specs de alto nível). |
+| 1.2    | 2026-08-13 | —     | Fases 4 (Recebimentos), 5 (Contratos) e 6 (Patrimônio) implementadas e validadas ponta a ponta (incluindo isolamento de dados entre usuários). Todos os critérios de aceite da seção 11 concluídos — V1 completa. |
 
 ## 1. Visão Geral
 
@@ -195,34 +196,34 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 A V1 está pronta quando o usuário consegue, de ponta a ponta:
 
 **Conta e acesso**
-- [ ] Criar conta e fazer login.
+- [x] Criar conta e fazer login.
 
 **Imóveis**
-- [ ] Cadastrar e editar imóvel.
-- [ ] Listar seus imóveis.
-- [ ] Acessar detalhes de um imóvel.
-- [ ] Sistema exige valor de aluguel quando o imóvel é para aluguel.
-- [ ] Sistema exige valor de venda quando o imóvel é para venda.
+- [x] Cadastrar e editar imóvel.
+- [x] Listar seus imóveis.
+- [x] Acessar detalhes de um imóvel.
+- [x] Sistema exige valor de aluguel quando o imóvel é para aluguel.
+- [x] Sistema exige valor de venda quando o imóvel é para venda.
 
 **Rendimentos**
-- [ ] Registrar recebimentos mensais de aluguel.
-- [ ] Detalhe do imóvel mostra a linha do tempo de rendimentos.
-- [ ] Filtrar rendimentos por mês, 6 meses e 12 meses.
+- [x] Registrar recebimentos mensais de aluguel.
+- [x] Detalhe do imóvel mostra a linha do tempo de rendimentos.
+- [x] Filtrar rendimentos por mês, 6 meses e 12 meses.
 
 **Contratos**
-- [ ] Gerar contrato de venda em PDF.
-- [ ] Gerar contrato de locação em PDF.
-- [ ] Baixar o PDF gerado.
-- [ ] Contrato gerado a partir de imóvel cadastrado fica vinculado ao imóvel e ao usuário.
-- [ ] Contrato gerado sem imóvel cadastrado fica vinculado apenas ao usuário.
-- [ ] Usuário só consegue ver e baixar seus próprios contratos.
+- [x] Gerar contrato de venda em PDF.
+- [x] Gerar contrato de locação em PDF.
+- [x] Baixar o PDF gerado.
+- [x] Contrato gerado a partir de imóvel cadastrado fica vinculado ao imóvel e ao usuário.
+- [x] Contrato gerado sem imóvel cadastrado fica vinculado apenas ao usuário.
+- [x] Usuário só consegue ver e baixar seus próprios contratos.
 
 **Patrimônio**
-- [ ] Dashboard mostra a visão geral do patrimônio.
+- [x] Dashboard mostra a visão geral do patrimônio.
 
 **Segurança e isolamento de dados**
-- [ ] Usuário só consegue ver seus próprios imóveis.
-- [ ] Usuário só consegue ver seus próprios contratos.
+- [x] Usuário só consegue ver seus próprios imóveis.
+- [x] Usuário só consegue ver seus próprios contratos.
 
 ## 12. Fases de Construção (V1)
 
@@ -255,14 +256,14 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - **Spec 3.5:** Detalhe do imóvel — status (disponível/indisponível), tipo, valores
   (venda, aluguel, IPTU, valor estimado) e dados complementares.
 
-### Fase 4 — Recebimentos e histórico
+### Fase 4 — Recebimentos e histórico (concluída)
 - **Spec 4.1:** Modelagem da tabela de recebimentos (SQL), vinculada a imóvel e
   usuário (Regra de negócio 10).
 - **Spec 4.2:** Registro de recebimento de aluguel (Fluxo 3, passos 1–2).
 - **Spec 4.3:** Linha do tempo de recebimentos com filtro por período — mês, 6 meses,
   1 ano (Fluxo 3, passos 3–4).
 
-### Fase 5 — Contratos
+### Fase 5 — Contratos (concluída)
 - **Spec 5.1:** Modelagem da tabela de contratos (SQL), com relação opcional ao imóvel
   (Regras de negócio 6, 7 e 8).
 - **Spec 5.2:** Geração de contrato vinculado a imóvel cadastrado, com dados
@@ -271,7 +272,7 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - **Spec 5.4:** Exportação do contrato em PDF, download e listagem de contratos gerados
   pelo usuário.
 
-### Fase 6 — Patrimônio, validações e refinamentos
+### Fase 6 — Patrimônio, validações e refinamentos (concluída)
 - **Spec 6.1:** Dashboard de patrimônio — soma de valores estimados, contagem de
   imóveis, distribuição por status, rendimento recente (Fluxo 6).
 - **Spec 6.2:** Validação de ponta a ponta de todos os Critérios de aceite (seção 11),
