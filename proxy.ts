@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const PROTECTED_PREFIXES = ["/dashboard", "/imoveis"];
+const PROTECTED_PREFIXES = ["/dashboard", "/imoveis", "/contratos"];
 const AUTH_ONLY_PATHS = ["/login", "/cadastro"];
 
 export async function proxy(request: NextRequest) {

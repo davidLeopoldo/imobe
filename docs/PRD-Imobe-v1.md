@@ -7,6 +7,7 @@
 | 1.0    | 2026-08-09 | —     | PRD inicial: problema, funcionalidades, regras, fluxos, critérios de aceite, fora do escopo, stack em alto nível, métricas de sucesso e riscos/premissas. |
 | 1.1    | 2026-08-10 | —     | Adicionada seção "Fases de Construção" (ordem de implementação da V1, dividida em fases com specs de alto nível). |
 | 1.2    | 2026-08-13 | —     | Fases 4 (Recebimentos), 5 (Contratos) e 6 (Patrimônio) implementadas e validadas ponta a ponta (incluindo isolamento de dados entre usuários). Todos os critérios de aceite da seção 11 concluídos — V1 completa. |
+| 1.3    | 2026-08-16 | —     | Corrigida inconsistência entre a seção 6.1 (que descrevia apenas 2 status: disponível/indisponível) e a seção de Patrimônio/Fluxo 6 (que já previa 4 status: alugado, disponível, vendido, indisponível). Adicionadas Regras de negócio 11 e 12 (transições válidas de status por tipo; indicação visual clara do tipo do imóvel). |
 
 ## 1. Visão Geral
 
@@ -60,7 +61,8 @@ independentemente de a funcionalidade estar tecnicamente "pronta":
 - Editar imóvel.
 - Listar imóveis.
 - Ver detalhes de um imóvel.
-- Marcar imóvel como disponível ou indisponível.
+- Marcar imóvel com um status entre: **disponível**, **alugado**, **vendido** ou
+  **indisponível** (ver Regra de negócio 11 para as transições válidas por tipo).
 - Definir se o imóvel é para venda, aluguel, ou ambos.
 - Informar valores: valor de venda, valor de aluguel mensal, valor do IPTU, valor
   estimado atual do imóvel.
@@ -145,6 +147,13 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 9. O valor estimado do imóvel é usado somente na visão geral de patrimônio (não interfere
    em valores de venda/aluguel).
 10. Recebimentos de aluguel ficam sempre relacionados ao imóvel e ao usuário dono do imóvel.
+11. O status do imóvel tem 4 valores possíveis: **disponível**, **alugado**, **vendido**,
+    **indisponível**. Um imóvel só pode ser marcado como "alugado" se `paraAluguel = true`,
+    e só pode ser marcado como "vendido" se `paraVenda = true`. O status inicial padrão de
+    um imóvel recém-cadastrado é "disponível".
+12. Na listagem e no detalhe do imóvel, deve ficar visualmente claro se o imóvel é
+    "Somente venda", "Somente aluguel" ou "Venda e aluguel" (derivado dos campos
+    `paraVenda`/`paraAluguel` já existentes) — não apenas os valores monetários.
 
 ## 10. Principais fluxos
 
@@ -253,8 +262,10 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
   as Regras de negócio 3, 4 e 5 (tipo, valor de aluguel obrigatório, valor de venda obrigatório).
 - **Spec 3.3:** Listagem de imóveis do usuário.
 - **Spec 3.4:** Edição de imóvel.
-- **Spec 3.5:** Detalhe do imóvel — status (disponível/indisponível), tipo, valores
-  (venda, aluguel, IPTU, valor estimado) e dados complementares.
+- **Spec 3.5:** Detalhe do imóvel — status (disponível/alugado/vendido/indisponível,
+  conforme Regra de negócio 11), indicação visual clara do tipo (somente venda/somente
+  aluguel/venda e aluguel — Regra de negócio 12), valores (venda, aluguel, IPTU, valor
+  estimado) e dados complementares.
 
 ### Fase 4 — Recebimentos e histórico (concluída)
 - **Spec 4.1:** Modelagem da tabela de recebimentos (SQL), vinculada a imóvel e

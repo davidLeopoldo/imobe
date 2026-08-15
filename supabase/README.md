@@ -17,6 +17,12 @@ devem ser executados **manualmente, em ordem**, no **SQL Editor** do dashboard d
 
 - `0000_common.sql` — funções utilitárias compartilhadas (ex.: trigger de `updated_at`).
 - `0001_create_imoveis.sql` — tabela `imoveis` + Row Level Security (RLS).
+- `0002_create_recebimentos.sql` — tabela `recebimentos` (histórico de aluguel) + RLS.
+- `0003_create_contratos.sql` — tabela `contratos` (venda/locação, vínculo opcional a imóvel) + RLS.
+- `0004_storage_contratos.sql` — bucket privado `contratos` + policies de `storage.objects`.
+- `0005_imoveis_status_consistente_com_tipo.sql` — constraints garantindo que status
+  "alugado"/"vendido" só sejam usados quando `para_aluguel`/`para_venda` (Regra de
+  negócio 11, PRD v1.3).
 
 ## Configuração de Auth necessária
 
