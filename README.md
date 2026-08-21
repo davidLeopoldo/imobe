@@ -1,4 +1,4 @@
-# Imobe
+# Vibe Coding Kit
 
 Micro-SaaS de gestão de imóveis, contratos e patrimônio — para proprietários
 que alugam/vendem imóveis e corretores autônomos.
