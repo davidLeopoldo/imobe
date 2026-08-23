@@ -186,3 +186,23 @@ Use performance monitoring tools to track improvements.
 # Stay Up-to-Date:
 
 Keep dependencies updated and stay aware of breaking changes in major libraries like Next.js, React, and Prisma. If a specific version is provided for a library, always use the given version to ensure compatibility and avoid unexpected behavior.
+
+# Gerenciamento de janela de contexto
+
+- Antes de iniciar a implementação de uma fase/feature nova (não pequenos
+  ajustes), pedir para o usuário rodar /context e aguardar o resultado
+  antes de prosseguir.
+- Depois de concluir uma fase, sinalizar que é um bom ponto de checkpoint
+  e perguntar se deve continuar na mesma sessão ou se o usuário prefere
+  abrir uma sessão nova antes da próxima fase.
+- Nunca afirmar um número exato de tokens que serão consumidos por uma
+  tarefa futura — dar apenas uma estimativa qualitativa (pequena / média
+  / grande) baseada na quantidade de arquivos novos e alterados previstos
+  no plano.
+- Regra prática de corte: se o /context reportado estiver acima de ~60%
+  e a próxima tarefa for classificada como média ou grande, recomendar
+  explicitamente iniciar uma sessão nova em vez de continuar.
+- Separar sempre planejamento de execução: depois que um PRD de feature
+  for aprovado, recomendar iniciar uma sessão nova dedicada só à
+  implementação (evita carregar o contexto da discussão do PRD dentro da
+  fase de código).

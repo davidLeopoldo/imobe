@@ -30,7 +30,7 @@ export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem disabled>Minha conta</DropdownMenuItem>
+            <DropdownMenuItem render={<Link href="/perfil" />}>Minha conta</DropdownMenuItem>
             <DropdownMenuSeparator />
             <form action={onLogout} className="contents">
               <DropdownMenuItem

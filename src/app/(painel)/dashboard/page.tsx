@@ -1,6 +1,8 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCurrencyBRL } from "@/lib/format";
 import { buscarResumoPatrimonioDoUsuario } from "./_data-access/buscar-resumo-patrimonio";
+import { listarImoveisAlugadosParaPagamento } from "./_data-access/listar-imoveis-alugados";
+import { RegistrarPagamentoDialog } from "./_components/registrar-pagamento-dialog";
 import type { ImovelStatus } from "@/services/imoveis-service";
 
 const STATUS_LABEL: Record<ImovelStatus, string> = {
@@ -11,12 +13,20 @@ const STATUS_LABEL: Record<ImovelStatus, string> = {
 };
 
 export default async function DashboardPage() {
-  const resumo = await buscarResumoPatrimonioDoUsuario();
+  const [resumo, imoveisAlugados] = await Promise.all([
+    buscarResumoPatrimonioDoUsuario(),
+    listarImoveisAlugadosParaPagamento(),
+  ]);
 
   return (
     <div>
-      <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
-      <p className="mt-2 text-muted-foreground">Visão geral do seu patrimônio imobiliário.</p>
+      <div className="flex flex-wrap items-start justify-between gap-4">
+        <div>
+          <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
+          <p className="mt-2 text-muted-foreground">Visão geral do seu patrimônio imobiliário.</p>
+        </div>
+        <RegistrarPagamentoDialog imoveis={imoveisAlugados} />
+      </div>
 
       <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <Card>

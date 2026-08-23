@@ -8,8 +8,16 @@ recebimentos (isolamento garantido via Row-Level Security no Postgres).
 
 ## Documentação
 
-- **[PRD](docs/PRD-Imobe-v1.md)** — visão geral, funcionalidades, regras de
-  negócio, fluxos, critérios de aceite e fases de construção.
+- **[Projeto](docs/projeto.md)** — o que o Imobe é e o que já faz hoje,
+  sempre atualizado (missão, público-alvo, escopo, funcionalidades em
+  produção).
+- **[PRD da V1](docs/PRD-Imobe-v1.md)** — visão geral, funcionalidades,
+  regras de negócio, fluxos, critérios de aceite e fases de construção da
+  primeira versão.
+- **[PRDs de features](docs/prd/)** — PRDs de melhorias feitas depois da V1
+  (ex.: [pagamento rápido, perfil e fotos do imóvel](docs/prd/feature-pagamento-rapido-perfil-fotos.md)).
+- **[Banco de dados](docs/database.md)** — schema do Postgres, tabelas,
+  constraints, RLS e buckets de storage.
 - **[ADRs](docs/adr/)** — decisões de arquitetura e seus porquês.
 - **[Regras do projeto](.claude/rules/)** — convenções seguidas pela IA e pelo
   time ao gerar código.

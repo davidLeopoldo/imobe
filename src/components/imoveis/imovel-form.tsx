@@ -2,6 +2,7 @@
 
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
 
@@ -9,22 +10,32 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import { ImovelFotosPicker } from "@/components/imoveis/imovel-fotos-picker";
 import { imovelSchema, type ImovelFormValues } from "@/lib/validations/imovel";
 
 interface ImovelFormActionResult {
   message?: string;
+  imovelId?: number;
 }
 
 interface ImovelFormProps {
   mode: "criar" | "editar";
   defaultValues?: Partial<ImovelFormValues>;
   action: (values: ImovelFormValues) => Promise<ImovelFormActionResult | void>;
+  /**
+   * Só usado em mode="criar". Chamado uma vez por foto selecionada, depois
+   * que o imóvel já foi criado — cada foto vira uma Server Action própria
+   * (em vez de enviar todas juntas), para não esbarrar no limite de body
+   * de uma única Server Action com fotos grandes.
+   */
+  onUploadFoto?: (imovelId: number, foto: File) => Promise<{ message?: string } | void>;
 }
 
-export function ImovelForm({ mode, defaultValues, action }: ImovelFormProps) {
+export function ImovelForm({ mode, defaultValues, action, onUploadFoto }: ImovelFormProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
+  const [fotos, setFotos] = useState<File[]>([]);
 
   const form = useForm<ImovelFormValues>({
     resolver: zodResolver(imovelSchema),
@@ -46,6 +57,34 @@ export function ImovelForm({ mode, defaultValues, action }: ImovelFormProps) {
       const result = await action(values);
       if (result?.message) {
         setServerError(result.message);
+        return;
+      }
+
+      if (mode === "criar" && result?.imovelId && onUploadFoto) {
+        const falhas: string[] = [];
+        for (const foto of fotos) {
+          const resultadoFoto = await onUploadFoto(result.imovelId, foto).catch(
+            (error: unknown): { message?: string } => ({
+              message: error instanceof Error ? error.message : undefined,
+            })
+          );
+          if (resultadoFoto?.message) {
+            falhas.push(`${foto.name}: ${resultadoFoto.message}`);
+          }
+        }
+
+        if (falhas.length > 0) {
+          // Falha isolada no upload de uma foto não impede o cadastro do
+          // imóvel, que já foi criado com sucesso — mas o usuário precisa
+          // saber quais fotos não entraram (Spec 03 do PRD).
+          toast.error(
+            falhas.length === 1
+              ? `Não foi possível enviar 1 foto: ${falhas[0]}`
+              : `Não foi possível enviar ${falhas.length} fotos:\n${falhas.join("\n")}`
+          );
+        }
+
+        router.push(`/imoveis/${result.imovelId}`);
       }
     });
   }
@@ -245,6 +284,8 @@ export function ImovelForm({ mode, defaultValues, action }: ImovelFormProps) {
             </Field>
           )}
         />
+
+        {mode === "criar" && <ImovelFotosPicker value={fotos} onChange={setFotos} />}
 
         {serverError && (
           <p role="alert" className="text-sm text-destructive">

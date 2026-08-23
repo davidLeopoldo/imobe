@@ -4,7 +4,13 @@ import { buttonVariants } from "@/components/ui/button";
 import { ImovelCard } from "@/components/imoveis/imovel-card";
 import type { Imovel } from "@/services/imoveis-service";
 
-export function ImoveisGrid({ imoveis }: { imoveis: Imovel[] }) {
+export function ImoveisGrid({
+  imoveis,
+  capas,
+}: {
+  imoveis: Imovel[];
+  capas: Record<number, string>;
+}) {
   if (imoveis.length === 0) {
     return (
       <div className="flex flex-col items-center justify-center gap-4 rounded-lg border border-dashed py-16 text-center">
@@ -25,7 +31,7 @@ export function ImoveisGrid({ imoveis }: { imoveis: Imovel[] }) {
   return (
     <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
       {imoveis.map((imovel) => (
-        <ImovelCard key={imovel.id} imovel={imovel} />
+        <ImovelCard key={imovel.id} imovel={imovel} capaUrl={capas[imovel.id]} />
       ))}
     </div>
   );

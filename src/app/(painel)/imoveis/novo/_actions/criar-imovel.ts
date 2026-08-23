@@ -1,6 +1,5 @@
 "use server";
 
-import { redirect } from "next/navigation";
 import { criarImovel } from "@/services/imoveis-service";
 import { imovelSchema, paraNumeroOuNulo, type ImovelFormValues } from "@/lib/validations/imovel";
 
@@ -11,7 +10,6 @@ export async function criarImovelAction(input: ImovelFormValues) {
   }
 
   const data = parsed.data;
-  let imovelId: number;
 
   try {
     const imovel = await criarImovel({
@@ -27,10 +25,9 @@ export async function criarImovelAction(input: ImovelFormValues) {
       cidade: data.cidade,
       link_anuncio: data.linkAnuncio || null,
     });
-    imovelId = imovel.id;
+
+    return { imovelId: imovel.id };
   } catch {
     return { message: "Não foi possível cadastrar o imóvel. Tente novamente." };
   }
-
-  redirect(`/imoveis/${imovelId}`);
 }

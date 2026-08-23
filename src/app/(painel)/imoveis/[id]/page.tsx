@@ -5,8 +5,10 @@ import { TipoImovelBadge } from "@/components/imoveis/tipo-imovel-badge";
 import { formatCurrencyBRL } from "@/lib/format";
 import { buscarImovel } from "./_data-access/buscar-imovel";
 import { listarRecebimentos } from "./_data-access/listar-recebimentos";
+import { listarFotosDoImovelParaDetalhe } from "./_data-access/listar-fotos";
 import { ImovelHeaderActions } from "./_components/imovel-header-actions";
 import { RecebimentosTimeline } from "./_components/recebimentos-timeline";
+import { FotosGaleria } from "./_components/fotos-galeria";
 import { AvisoToast } from "./_components/aviso-toast";
 import type { PeriodoFiltro } from "@/services/recebimentos-service";
 
@@ -40,6 +42,7 @@ export default async function ImovelDetalhePage({
   const recebimentos = imovel.para_aluguel
     ? await listarRecebimentos(imovel.id, periodo)
     : [];
+  const fotos = await listarFotosDoImovelParaDetalhe(imovel.id);
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -99,6 +102,8 @@ export default async function ImovelDetalhePage({
           recebimentos={recebimentos}
         />
       )}
+
+      <FotosGaleria fotos={fotos} />
 
       {imovel.link_anuncio && (
         <p className="mt-4 text-sm">

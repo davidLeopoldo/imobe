@@ -49,6 +49,18 @@ export async function listarImoveisDoUsuario() {
   return data as Imovel[];
 }
 
+export async function listarImoveisAlugadosDoUsuario() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("imoveis")
+    .select("id, endereco, bairro, cidade")
+    .eq("status", "alugado")
+    .order("endereco", { ascending: true });
+
+  if (error) throw new Error(error.message);
+  return data as Pick<Imovel, "id" | "endereco" | "bairro" | "cidade">[];
+}
+
 export async function buscarImovelPorId(id: number) {
   const supabase = await createClient();
   const { data, error } = await supabase

@@ -3,6 +3,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ImovelForm } from "@/components/imoveis/imovel-form";
 import { buscarImovel } from "../_data-access/buscar-imovel";
 import { atualizarImovelAction } from "./_actions/atualizar-imovel";
+import { listarFotosDoImovelParaEdicao } from "./_data-access/listar-fotos";
+import { GerenciarFotos } from "./_components/gerenciar-fotos";
 
 export default async function EditarImovelPage({
   params,
@@ -22,6 +24,7 @@ export default async function EditarImovelPage({
     notFound();
   }
 
+  const fotos = await listarFotosDoImovelParaEdicao(imovel.id);
   const action = atualizarImovelAction.bind(null, imovel.id);
 
   return (
@@ -50,6 +53,8 @@ export default async function EditarImovelPage({
           />
         </CardContent>
       </Card>
+
+      <GerenciarFotos imovelId={imovel.id} fotos={fotos} />
     </div>
   );
 }
