@@ -218,3 +218,15 @@ Keep dependencies updated and stay aware of breaking changes in major libraries 
   "Universal" e depois mover manualmente o conteúdo para `.claude/skills/`.
 - Nunca deixar a mesma skill duplicada em `.agents/skills/` e
   `.claude/skills/` ao mesmo tempo.
+
+# Comandos Git sempre visíveis
+
+- Sempre que rodar um comando Git (add, commit, push, branch, etc.), mostrar
+  o comando exato executado antes ou junto do resultado — nunca só descrever
+  em texto o que foi feito ("fiz o commit") sem exibir o comando real.
+- Isso vale mesmo quando o comando é gerado automaticamente a partir de um
+  pedido em linguagem natural (ex.: "faça o commit dessas mudanças") — o
+  usuário quer ver e aprender o comando por trás da ação, não só o
+  resultado.
+- Objetivo: o usuário está aprendendo Git no processo, então cada comando
+  executado é uma oportunidade de reforço, não só um passo mecânico.
