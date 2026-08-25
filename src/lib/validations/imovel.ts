@@ -16,7 +16,13 @@ export const imovelSchema = z
     bairro: z.string().min(2, { error: "Informe o bairro." }),
     cidade: z.string().min(2, { error: "Informe a cidade." }),
     linkAnuncio: z
-      .union([z.url({ error: "Informe uma URL válida." }), z.literal("")])
+      .union([
+        z.url({
+          protocol: /^https?$/,
+          error: "Informe uma URL válida (http ou https).",
+        }),
+        z.literal(""),
+      ])
       .optional(),
   })
   .superRefine((data, ctx) => {

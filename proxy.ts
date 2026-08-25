@@ -1,14 +1,22 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { updateSession } from "@/lib/supabase/middleware";
 
-const PROTECTED_PREFIXES = ["/dashboard", "/imoveis", "/contratos"];
+const PROTECTED_PREFIXES = [
+  "/dashboard",
+  "/imoveis",
+  "/contratos",
+  "/clientes",
+  "/perfil",
+];
 const AUTH_ONLY_PATHS = ["/login", "/cadastro"];
 
 export async function proxy(request: NextRequest) {
   const { response, user } = await updateSession(request);
   const { pathname } = request.nextUrl;
 
-  const isProtected = PROTECTED_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  const isProtected = PROTECTED_PREFIXES.some((prefix) =>
+    pathname.startsWith(prefix)
+  );
   if (isProtected && !user) {
     return NextResponse.redirect(new URL("/login", request.url));
   }
@@ -22,5 +30,7 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|webp)$).*)"],
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|webp)$).*)",
+  ],
 };

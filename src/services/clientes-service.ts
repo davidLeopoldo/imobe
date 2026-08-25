@@ -75,10 +75,13 @@ export async function criarCliente(input: ClienteInput) {
 
 export async function atualizarCliente(id: number, input: ClienteInput) {
   const supabase = await createClient();
+  const userId = await requireUserId(supabase);
+
   const { data, error } = await supabase
     .from("clientes")
     .update(input)
     .eq("id", id)
+    .eq("user_id", userId)
     .select("*")
     .single();
 
@@ -94,7 +97,14 @@ export async function atualizarCliente(id: number, input: ClienteInput) {
 
 export async function excluirCliente(id: number) {
   const supabase = await createClient();
-  const { error } = await supabase.from("clientes").delete().eq("id", id);
+  const userId = await requireUserId(supabase);
+
+  const { error, count } = await supabase
+    .from("clientes")
+    .delete({ count: "exact" })
+    .eq("id", id)
+    .eq("user_id", userId);
 
   if (error) throw new Error(error.message);
+  if (!count) throw new Error("Cliente não encontrado.");
 }

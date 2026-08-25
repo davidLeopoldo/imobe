@@ -1,7 +1,8 @@
 import { createClient } from "@/lib/supabase/server";
 import { requireUserId } from "@/lib/supabase/auth";
 
-export type ImovelStatus = "disponivel" | "indisponivel" | "alugado" | "vendido";
+export type ImovelStatus =
+  "disponivel" | "indisponivel" | "alugado" | "vendido";
 
 export interface Imovel {
   id: number;
@@ -89,10 +90,13 @@ export async function criarImovel(input: ImovelInput) {
 
 export async function atualizarImovel(id: number, input: ImovelInput) {
   const supabase = await createClient();
+  const userId = await requireUserId(supabase);
+
   const { data, error } = await supabase
     .from("imoveis")
     .update(input)
     .eq("id", id)
+    .eq("user_id", userId)
     .select("*")
     .single();
 
@@ -102,10 +106,13 @@ export async function atualizarImovel(id: number, input: ImovelInput) {
 
 export async function alternarStatusImovel(id: number, status: ImovelStatus) {
   const supabase = await createClient();
+  const userId = await requireUserId(supabase);
+
   const { data, error } = await supabase
     .from("imoveis")
     .update({ status })
     .eq("id", id)
+    .eq("user_id", userId)
     .select("*")
     .single();
 

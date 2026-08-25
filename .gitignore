@@ -24,6 +24,18 @@
 .DS_Store
 *.pem
 
+# credenciais / chaves (nunca commitar)
+*.key
+*.p12
+*.pfx
+id_rsa
+id_ed25519
+credentials.json
+service-account.json
+gcp-key.json
+secrets.json
+secrets.yaml
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -36,6 +48,9 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# relatórios de auditoria de segurança (podem detalhar vulnerabilidades — não versionar)
+security-reports/
 
 # playwright mcp test artifacts
 .playwright-mcp
