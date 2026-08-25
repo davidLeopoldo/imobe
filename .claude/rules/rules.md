@@ -202,6 +202,19 @@ Keep dependencies updated and stay aware of breaking changes in major libraries 
 - Regra prática de corte: se o /context reportado estiver acima de ~60%
   e a próxima tarefa for classificada como média ou grande, recomendar
   explicitamente iniciar uma sessão nova em vez de continuar.
+- Toda vez que o /context for rodado (a pedido do usuário ou
+  proativamente antes de uma fase), encerrar com um veredito prático
+  explícito — nunca só mostrar os números brutos. O veredito deve
+  classificar o momento em uma das três faixas, com base no threshold de
+  ~60% acima:
+  - **Tranquilo para prosseguir** (bem abaixo de 60%): pode seguir
+    normalmente na mesma sessão.
+  - **Zona de atenção** (perto de 60%, ou já passou mas a próxima tarefa é
+    pequena): pode continuar, mas sinalizar que o espaço está ficando
+    mais curto.
+  - **Recomenda sessão nova** (acima de 60% e próxima tarefa média/grande,
+    conforme a regra de corte acima): recomendar explicitamente abrir uma
+    sessão nova antes de prosseguir.
 - Separar sempre planejamento de execução: depois que um PRD de feature
   for aprovado, recomendar iniciar uma sessão nova dedicada só à
   implementação (evita carregar o contexto da discussão do PRD dentro da
