@@ -206,3 +206,15 @@ Keep dependencies updated and stay aware of breaking changes in major libraries 
   for aprovado, recomendar iniciar uma sessão nova dedicada só à
   implementação (evita carregar o contexto da discussão do PRD dentro da
   fase de código).
+
+# Instalação de Skills (npx skills add)
+
+- O Claude Code só reconhece skills dentro de `.claude/skills/` —
+  `.agents/skills/` é usado por outras ferramentas (Cursor, Copilot, etc.),
+  não pelo Claude Code.
+- Ao instalar skills via `npx skills add`, selecionar como destino apenas
+  a opção que grava em `.claude/skills/`.
+- Se a ferramenta não oferecer esse alvo específico, instalar via
+  "Universal" e depois mover manualmente o conteúdo para `.claude/skills/`.
+- Nunca deixar a mesma skill duplicada em `.agents/skills/` e
+  `.claude/skills/` ao mesmo tempo.
