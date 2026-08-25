@@ -23,6 +23,8 @@ devem ser executados **manualmente, em ordem**, no **SQL Editor** do dashboard d
 - `0005_imoveis_status_consistente_com_tipo.sql` — constraints garantindo que status
   "alugado"/"vendido" só sejam usados quando `para_aluguel`/`para_venda` (Regra de
   negócio 11, PRD v1.3).
+- `0011_create_clientes.sql` — tabela `clientes` (cadastro reutilizável de pessoa
+  física, CPF único por usuário) + RLS.
 
 ## Configuração de Auth necessária
 
