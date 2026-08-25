@@ -48,7 +48,6 @@ export function ClienteForm({ mode, defaultValues, action }: ClienteFormProps) {
     resolver: zodResolver(clienteSchema),
     defaultValues: {
       nome: "",
-      cpf: "",
       endereco: "",
       telefone: "",
       email: "",
