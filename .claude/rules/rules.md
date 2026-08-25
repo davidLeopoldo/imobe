@@ -243,3 +243,22 @@ Keep dependencies updated and stay aware of breaking changes in major libraries 
   resultado.
 - Objetivo: o usuário está aprendendo Git no processo, então cada comando
   executado é uma oportunidade de reforço, não só um passo mecânico.
+
+# Checklist de teste manual após implementação
+
+- Sempre que o Playwright MCP estiver disponível, usá-lo proativamente para
+  testar os fluxos de UI (navegação, formulários, mensagens de erro,
+  diálogos) antes de entregar o checklist ao usuário — não deixar 100% da
+  verificação de UI a cargo do usuário quando é possível automatizar.
+- Ao final de qualquer fase/spec implementada, sempre fornecer um checklist
+  objetivo do que precisa ser testado manualmente, baseado nos critérios de
+  aceite do PRD/spec correspondente.
+- Para cada item do checklist, indicar onde testar (rota/tela específica,
+  ex.: "/clientes/novo") e o resultado esperado.
+- Se testes automatizados (ex.: Playwright) já cobrirem parte do escopo,
+  deixar claro o que já foi validado automaticamente e o que ainda depende
+  de verificação manual do usuário — não assumir que build/lint passando
+  substitui teste funcional.
+- O checklist manual final deve focar só no que realmente exige julgamento
+  humano (aparência visual, sensação de uso) — não em cliques mecânicos que
+  o Playwright já cobriu.
