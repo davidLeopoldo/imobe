@@ -17,7 +17,7 @@ Hoje, ao gerar um contrato (avulso ou vinculado a um imóvel), o usuário digita
 
 ## 3. Público-alvo
 
-O mesmo usuário do restante do Imobe: proprietário/corretor pessoa física, operando sozinho (mono-tenant, sem equipe), que já usa o sistema para cadastrar imóveis e gerar contratos.
+O mesmo usuário do restante do Immobiliare: proprietário/corretor pessoa física, operando sozinho (mono-tenant, sem equipe), que já usa o sistema para cadastrar imóveis e gerar contratos.
 
 ## 4. Objetivo do recorte atual
 

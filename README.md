@@ -8,7 +8,7 @@ recebimentos (isolamento garantido via Row-Level Security no Postgres).
 
 ## Documentação
 
-- **[Projeto](docs/projeto.md)** — o que o Imobe é e o que já faz hoje,
+- **[Projeto](docs/projeto.md)** — o que o Immobiliare é e o que já faz hoje,
   sempre atualizado (missão, público-alvo, escopo, funcionalidades em
   produção).
 - **[PRD da V1](docs/PRD-Imobe-v1.md)** — visão geral, funcionalidades,

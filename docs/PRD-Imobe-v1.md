@@ -1,17 +1,17 @@
-# PRD — Imobe (v1)
+# PRD — Immobiliare (v1)
 
 ## Changelog
 
-| Versão | Data       | Autor | Resumo da mudança                          |
-|--------|------------|-------|---------------------------------------------|
-| 1.0    | 2026-08-09 | —     | PRD inicial: problema, funcionalidades, regras, fluxos, critérios de aceite, fora do escopo, stack em alto nível, métricas de sucesso e riscos/premissas. |
-| 1.1    | 2026-08-10 | —     | Adicionada seção "Fases de Construção" (ordem de implementação da V1, dividida em fases com specs de alto nível). |
-| 1.2    | 2026-08-13 | —     | Fases 4 (Recebimentos), 5 (Contratos) e 6 (Patrimônio) implementadas e validadas ponta a ponta (incluindo isolamento de dados entre usuários). Todos os critérios de aceite da seção 11 concluídos — V1 completa. |
+| Versão | Data       | Autor | Resumo da mudança                                                                                                                                                                                                                                                                                                                  |
+| ------ | ---------- | ----- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0    | 2026-08-09 | —     | PRD inicial: problema, funcionalidades, regras, fluxos, critérios de aceite, fora do escopo, stack em alto nível, métricas de sucesso e riscos/premissas.                                                                                                                                                                          |
+| 1.1    | 2026-08-10 | —     | Adicionada seção "Fases de Construção" (ordem de implementação da V1, dividida em fases com specs de alto nível).                                                                                                                                                                                                                  |
+| 1.2    | 2026-08-13 | —     | Fases 4 (Recebimentos), 5 (Contratos) e 6 (Patrimônio) implementadas e validadas ponta a ponta (incluindo isolamento de dados entre usuários). Todos os critérios de aceite da seção 11 concluídos — V1 completa.                                                                                                                  |
 | 1.3    | 2026-08-16 | —     | Corrigida inconsistência entre a seção 6.1 (que descrevia apenas 2 status: disponível/indisponível) e a seção de Patrimônio/Fluxo 6 (que já previa 4 status: alugado, disponível, vendido, indisponível). Adicionadas Regras de negócio 11 e 12 (transições válidas de status por tipo; indicação visual clara do tipo do imóvel). |
 
 ## 1. Visão Geral
 
-**Imobe** é um micro-SaaS para gestão de imóveis, contratos e patrimônio, voltado para
+**Immobiliare** é um micro-SaaS para gestão de imóveis, contratos e patrimônio, voltado para
 proprietários que alugam ou vendem imóveis e para corretores autônomos que precisam
 organizar seus imóveis, contratos e informações em um só lugar.
 
@@ -54,9 +54,11 @@ independentemente de a funcionalidade estar tecnicamente "pronta":
 ### 6.1 Essenciais (V1)
 
 **Conta e acesso**
+
 - Criar conta e fazer login.
 
 **Imóveis**
+
 - Cadastrar imóvel.
 - Editar imóvel.
 - Listar imóveis.
@@ -70,6 +72,7 @@ independentemente de a funcionalidade estar tecnicamente "pronta":
   link do anúncio (se houver).
 
 **Contratos**
+
 - Gerar contrato de venda.
 - Gerar contrato de locação.
 - Gerar contrato vinculado a um imóvel já cadastrado (onboarding pré-preenche os dados).
@@ -78,11 +81,13 @@ independentemente de a funcionalidade estar tecnicamente "pronta":
 - Ver lista de contratos gerados.
 
 **Recebimentos e histórico**
+
 - Registrar recebimento de aluguel (simples, sem controle financeiro completo).
 - Exibir histórico de recebimentos no detalhe do imóvel, com filtro por período
   (mês, 6 meses, 1 ano).
 
 **Patrimônio**
+
 - Visão geral do patrimônio: soma dos valores estimados dos imóveis do usuário.
 - Quantidade de imóveis cadastrados.
 - Distribuição por status: alugados, disponíveis, vendidos, indisponíveis.
@@ -121,11 +126,13 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 ## 8. Riscos e Premissas
 
 **Premissas assumidas:**
+
 - O usuário sabe preencher os dados do contrato sem apoio jurídico dentro do produto.
 - O modelo de contrato gerado é um modelo genérico, não substitui validação jurídica.
 - O usuário tem pelo menos um imóvel para começar a usar o produto de forma significativa.
 
 **Riscos identificados:**
+
 - Modelo de contrato genérico pode não ser juridicamente adequado em todos os
   estados/municípios (regras locais de locação variam).
 - Ausência de validação de dados sensíveis (CPF, endereço) pode gerar contratos
@@ -158,11 +165,13 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 ## 10. Principais fluxos
 
 ### Fluxo 1 — Acesso
+
 1. Usuário cria conta.
 2. Usuário faz login.
 3. Usuário acessa o dashboard.
 
 ### Fluxo 2 — Cadastro de imóveis
+
 1. Usuário acessa a área de imóveis.
 2. Clica em "Cadastrar imóvel".
 3. Preenche as informações do imóvel.
@@ -171,12 +180,14 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 6. Salva o imóvel.
 
 ### Fluxo 3 — Gestão de rendimentos
+
 1. Usuário acessa um imóvel alugado.
 2. Registra o recebimento de aluguel do mês.
 3. Visualiza a linha do tempo de rendimento.
 4. Filtra por mês, 6 meses ou 12 meses.
 
 ### Fluxo 4 — Geração de contrato com imóvel cadastrado
+
 1. Usuário acessa o imóvel.
 2. Escolhe "Gerar contrato".
 3. Seleciona venda ou locação.
@@ -186,6 +197,7 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 7. O contrato fica relacionado ao usuário e ao imóvel.
 
 ### Fluxo 5 — Geração de contrato sem imóvel cadastrado
+
 1. Usuário acessa a área de contratos.
 2. Escolhe o tipo de contrato: venda ou locação.
 3. Preenche os dados do imóvel e das partes.
@@ -194,6 +206,7 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 6. O contrato fica relacionado apenas ao usuário.
 
 ### Fluxo 6 — Visão geral do patrimônio
+
 1. Usuário acessa o dashboard.
 2. Visualiza o total estimado do patrimônio.
 3. Visualiza a quantidade de imóveis cadastrados.
@@ -205,9 +218,11 @@ Explicitamente **não entra** nesta versão — candidatos para versões futuras
 A V1 está pronta quando o usuário consegue, de ponta a ponta:
 
 **Conta e acesso**
+
 - [x] Criar conta e fazer login.
 
 **Imóveis**
+
 - [x] Cadastrar e editar imóvel.
 - [x] Listar seus imóveis.
 - [x] Acessar detalhes de um imóvel.
@@ -215,11 +230,13 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - [x] Sistema exige valor de venda quando o imóvel é para venda.
 
 **Rendimentos**
+
 - [x] Registrar recebimentos mensais de aluguel.
 - [x] Detalhe do imóvel mostra a linha do tempo de rendimentos.
 - [x] Filtrar rendimentos por mês, 6 meses e 12 meses.
 
 **Contratos**
+
 - [x] Gerar contrato de venda em PDF.
 - [x] Gerar contrato de locação em PDF.
 - [x] Baixar o PDF gerado.
@@ -228,9 +245,11 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - [x] Usuário só consegue ver e baixar seus próprios contratos.
 
 **Patrimônio**
+
 - [x] Dashboard mostra a visão geral do patrimônio.
 
 **Segurança e isolamento de dados**
+
 - [x] Usuário só consegue ver seus próprios imóveis.
 - [x] Usuário só consegue ver seus próprios contratos.
 
@@ -242,12 +261,14 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 > as Rules e Skills já configuradas no projeto.
 
 ### Fase 1 — Base inicial, layout e navegação
+
 - **Spec 1.1:** Setup do projeto (Next.js + TypeScript + TailwindCSS), estrutura de
   pastas conforme as Rules do projeto (`/components`, `/hooks`, `/services`, `/lib`).
 - **Spec 1.2:** Layout base — header, navegação, separação entre área pública
   (landing, login, cadastro) e área privada (dashboard).
 
 ### Fase 2 — Acesso do usuário
+
 - **Spec 2.1:** Configuração do Supabase Auth no projeto (client + variáveis de ambiente).
 - **Spec 2.2:** Tela e fluxo de cadastro de conta (Fluxo 1, passo 1).
 - **Spec 2.3:** Tela e fluxo de login (Fluxo 1, passo 2).
@@ -256,6 +277,7 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - **Spec 2.5:** Redirecionamento pós-login/cadastro para o dashboard (Fluxo 1, passo 3).
 
 ### Fase 3 — Gestão de imóveis
+
 - **Spec 3.1:** Modelagem da tabela de imóveis no Supabase (SQL) com RLS
   (Regra de negócio 1: cada usuário só vê seus próprios imóveis).
 - **Spec 3.2:** Cadastro de imóvel — formulário com validação (Fluxo 2), respeitando
@@ -268,6 +290,7 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
   estimado) e dados complementares.
 
 ### Fase 4 — Recebimentos e histórico (concluída)
+
 - **Spec 4.1:** Modelagem da tabela de recebimentos (SQL), vinculada a imóvel e
   usuário (Regra de negócio 10).
 - **Spec 4.2:** Registro de recebimento de aluguel (Fluxo 3, passos 1–2).
@@ -275,6 +298,7 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
   1 ano (Fluxo 3, passos 3–4).
 
 ### Fase 5 — Contratos (concluída)
+
 - **Spec 5.1:** Modelagem da tabela de contratos (SQL), com relação opcional ao imóvel
   (Regras de negócio 6, 7 e 8).
 - **Spec 5.2:** Geração de contrato vinculado a imóvel cadastrado, com dados
@@ -284,6 +308,7 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
   pelo usuário.
 
 ### Fase 6 — Patrimônio, validações e refinamentos (concluída)
+
 - **Spec 6.1:** Dashboard de patrimônio — soma de valores estimados, contagem de
   imóveis, distribuição por status, rendimento recente (Fluxo 6).
 - **Spec 6.2:** Validação de ponta a ponta de todos os Critérios de aceite (seção 11),
@@ -306,7 +331,8 @@ A V1 está pronta quando o usuário consegue, de ponta a ponta:
 - **Responsividade:** obrigatória — desktop, tablet e mobile.
 
 ---
-*Documento gerado como PRD inicial (v1.1) do projeto Imobe, consolidando o workflow de
+
+_Documento gerado como PRD inicial (v1.1) do projeto Immobiliare, consolidando o workflow de
 descoberta: problema → público → métricas de sucesso → funcionalidades → fora do
 escopo → riscos/premissas → regras de negócio → fluxos → critérios de aceite → fases
-de construção → stack.*
+de construção → stack._

@@ -8,8 +8,9 @@ export default function LandingPage() {
         Organize seus imóveis, contratos e patrimônio em um só lugar
       </h1>
       <p className="max-w-xl text-lg text-muted-foreground">
-        O Imobe ajuda proprietários e corretores autônomos a cadastrar imóveis, gerar
-        contratos e acompanhar o rendimento de aluguel sem depender de planilhas soltas.
+        O Immobiliare ajuda proprietários e corretores autônomos a cadastrar
+        imóveis, gerar contratos e acompanhar o rendimento de aluguel sem
+        depender de planilhas soltas.
       </p>
       <div className="flex gap-3">
         <Link href="/cadastro" className={buttonVariants({ size: "lg" })}>

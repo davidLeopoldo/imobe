@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { LogOut, UserRound } from "lucide-react";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
@@ -16,8 +17,19 @@ export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-2">
           <PainelMobileNav />
-          <Link href="/dashboard" className="text-lg font-semibold tracking-tight">
-            Imobe
+          <Link
+            href="/dashboard"
+            className="flex items-center gap-2 text-lg font-semibold tracking-tight"
+          >
+            <Image
+              src="/logo-header.png"
+              alt=""
+              width={28}
+              height={28}
+              className="rounded-sm"
+              priority
+            />
+            Immobiliare
           </Link>
         </div>
 
@@ -30,7 +42,9 @@ export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
             </Avatar>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuItem render={<Link href="/perfil" />}>Minha conta</DropdownMenuItem>
+            <DropdownMenuItem render={<Link href="/perfil" />}>
+              Minha conta
+            </DropdownMenuItem>
             <DropdownMenuSeparator />
             <form action={onLogout} className="contents">
               <DropdownMenuItem

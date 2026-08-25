@@ -16,19 +16,22 @@ export function ContratoVendaDocument({ contrato }: { contrato: Contrato }) {
 
         <Text style={s.secaoTitulo}>1. Das partes</Text>
         <Text style={s.paragrafo}>
-          VENDEDOR: {contrato.proprietario_nome}, CPF nº {contrato.proprietario_cpf},
-          residente e domiciliado em {contrato.proprietario_endereco}.
+          VENDEDOR: {contrato.proprietario_nome}, CPF nº{" "}
+          {contrato.proprietario_cpf}, residente e domiciliado em{" "}
+          {contrato.proprietario_endereco}.
         </Text>
         <Text style={s.paragrafo}>
-          COMPRADOR: {contrato.contraparte_nome}, CPF nº {contrato.contraparte_cpf},
-          residente e domiciliado em {contrato.contraparte_endereco}.
+          COMPRADOR: {contrato.contraparte_nome}, CPF nº{" "}
+          {contrato.contraparte_cpf}, residente e domiciliado em{" "}
+          {contrato.contraparte_endereco}.
         </Text>
 
         <Text style={s.secaoTitulo}>2. Do objeto</Text>
         <Text style={s.paragrafo}>
           O presente contrato tem como objeto o imóvel localizado em{" "}
           {contrato.imovel_endereco}, bairro {contrato.imovel_bairro}, cidade de{" "}
-          {contrato.imovel_cidade}, doravante denominado simplesmente &quot;imóvel&quot;.
+          {contrato.imovel_cidade}, doravante denominado simplesmente
+          &quot;imóvel&quot;.
         </Text>
 
         <Text style={s.secaoTitulo}>3. Do preço e forma de pagamento</Text>
@@ -42,8 +45,8 @@ export function ContratoVendaDocument({ contrato }: { contrato: Contrato }) {
 
         <Text style={s.secaoTitulo}>4. Do foro</Text>
         <Text style={s.paragrafo}>
-          Fica eleito o foro da comarca de {contrato.imovel_cidade} para dirimir quaisquer
-          dúvidas oriundas do presente contrato.
+          Fica eleito o foro da comarca de {contrato.imovel_cidade} para dirimir
+          quaisquer dúvidas oriundas do presente contrato.
         </Text>
 
         <Text style={s.paragrafo}>
@@ -62,8 +65,8 @@ export function ContratoVendaDocument({ contrato }: { contrato: Contrato }) {
         </View>
 
         <Text style={s.rodape}>
-          Este é um modelo de contrato genérico gerado automaticamente pelo Imobe e não
-          substitui validação jurídica especializada.
+          Este é um modelo de contrato genérico gerado automaticamente pelo
+          Immobiliare e não substitui validação jurídica especializada.
         </Text>
       </Page>
     </Document>

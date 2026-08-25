@@ -24,7 +24,7 @@ export function PainelMobileNav() {
       </SheetTrigger>
       <SheetContent side="left">
         <SheetHeader>
-          <SheetTitle>Imobe</SheetTitle>
+          <SheetTitle>Immobiliare</SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col gap-1 px-4">
           {PAINEL_NAV_ITEMS.map(({ href, label, icon: Icon }) => (

@@ -13,7 +13,7 @@
 
 ## 1. Visão geral
 
-Esta feature reúne três melhorias no Imobe (que já tem sua V1 completa e em
+Esta feature reúne três melhorias no Immobiliare (que já tem sua V1 completa e em
 produção): um atalho no Dashboard para registrar pagamento de aluguel sem
 sair da tela; uma página de Perfil onde o usuário guarda telefone/WhatsApp e
 redes sociais; e a possibilidade de anexar fotos aos imóveis cadastrados,
@@ -29,7 +29,7 @@ como um mesmo lote de evolução do produto.
   usuário precisa sair do Dashboard, entrar no imóvel específico e abrir o
   fluxo completo de recebimento. Para o caso comum — só confirmar que o
   aluguel do mês caiu — isso é mais passo do que precisa.
-- **Perfil:** o Imobe não tem hoje nenhum lugar para o usuário guardar
+- **Perfil:** o Immobiliare não tem hoje nenhum lugar para o usuário guardar
   telefone/WhatsApp ou redes sociais. Proprietários e corretores autônomos
   costumam divulgar contato junto dos imóveis (para interessados em
   aluguel/venda); sem um perfil, esse dado fica fora do sistema.
@@ -39,7 +39,7 @@ como um mesmo lote de evolução do produto.
 
 ## 3. Público-alvo
 
-O mesmo público do Imobe: proprietários pessoa física e corretores
+O mesmo público do Immobiliare: proprietários pessoa física e corretores
 autônomos que já usam o sistema para cadastrar imóveis, gerar contratos e
 acompanhar patrimônio. Esta feature não muda o público — reforça o uso já
 existente, tornando o dia a dia (registrar aluguel, identificar imóveis,
@@ -227,7 +227,7 @@ para esta feature):
 ## 11. Justificativa da stack
 
 Nenhuma das três melhorias exige tecnologia fora do que o projeto já usa.
-O Imobe já resolve, hoje, um problema equivalente ao de fotos de imóvel —
+O Immobiliare já resolve, hoje, um problema equivalente ao de fotos de imóvel —
 armazenar e servir arquivos de forma privada e segura por usuário — para os
 PDFs de contrato, usando o Storage do Supabase com controle de acesso via
 RLS. O mesmo raciocínio de segurança (cada usuário só acessa seus próprios
@@ -282,7 +282,7 @@ Specs:
   mês caiu. Reduzir o atrito aqui aumenta a chance de o usuário manter os
   recebimentos sempre em dia, o que por sua vez mantém a visão de
   patrimônio e rendimento confiável.
-- **Contexto:** O Imobe já tem um fluxo completo de registro de
+- **Contexto:** O Immobiliare já tem um fluxo completo de registro de
   recebimento de aluguel (com mês de referência, valor, data e
   observação), vinculado ao detalhe de cada imóvel. Essa spec não substitui
   esse fluxo — adiciona um atalho paralelo, mais enxuto, acessível direto
@@ -389,7 +389,7 @@ Specs:
   visualiza seu e-mail e edita nome, telefone/WhatsApp, Instagram e TikTok.
 - **Intenção (por quê):** Proprietários e corretores autônomos costumam
   precisar divulgar um contato junto dos imóveis que administram. Hoje o
-  Imobe não guarda nenhum dado de contato ou rede social do usuário — essa
+  Immobiliare não guarda nenhum dado de contato ou rede social do usuário — essa
   spec dá um lugar próprio para isso, plantando a base para usos futuros
   (por exemplo, esse contato aparecer em algum lugar voltado a divulgação),
   sem que este PRD comprometa esse uso futuro.
@@ -485,7 +485,7 @@ Specs:
   divulgação. Fotos tornam o cadastro mais útil desde o primeiro momento —
   tanto para o próprio usuário organizar visualmente seus imóveis quanto
   para eventual uso em divulgação futura.
-- **Contexto:** O cadastro de imóvel já existe no Imobe, com campos de
+- **Contexto:** O cadastro de imóvel já existe no Immobiliare, com campos de
   endereço, valores, tipo (venda/aluguel/ambos) e dados complementares.
   Esta spec adiciona a possibilidade de anexar fotos a esse mesmo fluxo de
   cadastro, sem alterar os campos e regras já existentes. O projeto já tem
@@ -586,12 +586,11 @@ Specs:
   existem para listar e detalhar imóveis: uma capa/miniatura na listagem, e
   uma galeria no detalhe com visualização ampliada e navegação entre as
   fotos.
-- **Intenção (por quê):** De nada adianta anexar fotos a um imóvel (Spec
-  03) se elas não aparecem em lugar nenhum. Esta spec é o que faz a foto
+- **Intenção (por quê):** De nada adianta anexar fotos a um imóvel (Spec 03) se elas não aparecem em lugar nenhum. Esta spec é o que faz a foto
   virar valor visível para o usuário no dia a dia — reconhecer um imóvel de
   relance na lista, e ver todas as fotos ao abrir o detalhe.
 - **Contexto:** A listagem de imóveis e a tela de detalhe do imóvel já
-  existem no Imobe, mostrando hoje apenas dados textuais e valores. Esta
+  existem no Immobiliare, mostrando hoje apenas dados textuais e valores. Esta
   spec depende de a Spec 03 (ou da Spec 05, para imóveis editados depois)
   já ter fotos associadas ao imóvel para ter o que exibir — sem fotos
   anexadas, o comportamento de "sem foto" descrito abaixo se aplica.
@@ -688,7 +687,7 @@ Specs:
   divulgação, foto desatualizada). Sem essa spec, a única forma de ter
   fotos seria acertar tudo no cadastro inicial — o que não reflete o uso
   real.
-- **Contexto:** A tela de edição de imóvel já existe no Imobe, para editar
+- **Contexto:** A tela de edição de imóvel já existe no Immobiliare, para editar
   os dados textuais e de valores do imóvel. Esta spec estende essa mesma
   tela para também gerenciar as fotos associadas ao imóvel, reaproveitando
   as mesmas regras de validação de tipo, tamanho e quantidade já definidas

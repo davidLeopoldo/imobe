@@ -1,4 +1,4 @@
-# Projeto — Imobe
+# Projeto — Immobiliare
 
 > Documento vivo: diferente do PRD (referência inicial, mais estável), este
 > arquivo deve ser atualizado sempre que o projeto ganhar ou mudar
@@ -6,15 +6,15 @@
 > arquitetura ou convenções de código — isso vive no README, nas rules e
 > nos ADRs. Este arquivo é só sobre **o que o projeto é** e **o que ele faz**.
 
-## O que é o Imobe
+## O que é o Immobiliare
 
-O Imobe é um sistema simples para quem tem imóveis e precisa parar de
+O Immobiliare é um sistema simples para quem tem imóveis e precisa parar de
 controlar tudo em planilhas soltas, anotações e memória. Ele reúne, num só
 lugar, o cadastro dos imóveis, a geração de contratos de venda e locação, o
 registro de recebimentos de aluguel, e uma visão clara de quanto patrimônio
 imobiliário a pessoa tem hoje.
 
-Cada pessoa que usa o Imobe só vê e gerencia os próprios imóveis, contratos
+Cada pessoa que usa o Immobiliare só vê e gerencia os próprios imóveis, contratos
 e recebimentos — não é um sistema pensado para equipe ou múltiplos usuários
 numa mesma conta.
 
@@ -34,7 +34,7 @@ recebimento pra imposto de renda, decidir se vende ou mantém um imóvel).
 corretores autônomos que administram imóveis de terceiros sem o apoio
 estrutural de uma imobiliária.
 
-**O que o Imobe resolve:** tira a gestão de imóveis da planilha solta e da
+**O que o Immobiliare resolve:** tira a gestão de imóveis da planilha solta e da
 memória, dando a essas pessoas um lugar único, simples e confiável para
 organizar seus imóveis, gerar contratos e acompanhar a evolução do próprio
 patrimônio — sem a complexidade, o custo ou o overhead de um sistema pensado
@@ -42,7 +42,7 @@ para imobiliárias grandes.
 
 ## Missão desta fase
 
-A V1 do Imobe está **completa e validada ponta a ponta**: todas as fases de
+A V1 do Immobiliare está **completa e validada ponta a ponta**: todas as fases de
 construção previstas no PRD (base e navegação, acesso, gestão de imóveis,
 recebimentos, contratos e patrimônio) foram implementadas, e todos os
 critérios de aceite da V1 estão marcados como concluídos, incluindo o
@@ -65,7 +65,7 @@ que já existe**:
 
 ## Público-alvo
 
-O Imobe é feito para **uso individual**: cada conta representa uma pessoa
+O Immobiliare é feito para **uso individual**: cada conta representa uma pessoa
 cuidando dos próprios imóveis (ou dos imóveis que administra), não uma
 equipe.
 
@@ -102,7 +102,7 @@ equipe.
 
 ### Quem não é o público
 
-O Imobe **não é para** imobiliárias grandes com equipe própria, sistemas
+O Immobiliare **não é para** imobiliárias grandes com equipe própria, sistemas
 com múltiplos usuários numa mesma conta, ou operação em escala empresarial.
 Não há hoje (nem está planejado no curto prazo) suporte a times, permissões
 por usuário, ou gestão compartilhada de uma mesma carteira de imóveis.
@@ -113,7 +113,7 @@ por usuário, ou gestão compartilhada de uma mesma carteira de imóveis.
   registro de recebimento e visão de patrimônio vivem juntos — sem precisar
   alternar entre planilha, editor de texto e memória para cada uma dessas
   tarefas.
-- **Simplicidade sobre completude:** o Imobe não tenta ser um ERP
+- **Simplicidade sobre completude:** o Immobiliare não tenta ser um ERP
   imobiliário. Ele cobre o essencial do dia a dia de quem administra poucos
   imóveis sozinho, sem telas, campos ou fluxos que só fariam sentido para
   uma operação em escala.
@@ -122,7 +122,7 @@ por usuário, ou gestão compartilhada de uma mesma carteira de imóveis.
   já consegue cadastrar um imóvel e gerar um contrato.
 - **Contrato pronto sem digitar tudo de novo:** quando o imóvel já está
   cadastrado, o contrato puxa os dados automaticamente; quando não está,
-  ainda é possível gerar um contrato avulso — o Imobe se adapta ao que a
+  ainda é possível gerar um contrato avulso — o Immobiliare se adapta ao que a
   pessoa já tem organizado, em vez de exigir cadastro prévio completo.
 - **Visão de patrimônio sem controle financeiro complexo:** o usuário
   entende quanto tem, quantos imóveis estão em cada status e o rendimento
@@ -134,7 +134,7 @@ por usuário, ou gestão compartilhada de uma mesma carteira de imóveis.
 
 ## Escopo
 
-### O que o Imobe é hoje
+### O que o Immobiliare é hoje
 
 Um sistema de uso individual para cadastro de imóveis (com fotos), geração
 de contratos de venda/locação em PDF, registro de recebimentos de aluguel
@@ -144,7 +144,7 @@ detalhamento completo do que já está em produção está na seção
 ["O que o usuário consegue fazer hoje"](#o-que-o-usuário-consegue-fazer-hoje),
 mais abaixo neste documento.
 
-### O que o Imobe não é (fora de escopo por enquanto)
+### O que o Immobiliare não é (fora de escopo por enquanto)
 
 - Não processa pagamento online.
 - Não oferece assinatura digital de contrato.
@@ -169,9 +169,11 @@ contexto rápido.
 ## O que o usuário consegue fazer hoje
 
 **Conta**
+
 - Criar uma conta e fazer login para começar a usar o sistema.
 
 **Imóveis**
+
 - Cadastrar um imóvel novo, com endereço, localização, valores (venda,
   aluguel mensal, IPTU, valor estimado) e link do anúncio, se houver.
 - Dizer se aquele imóvel é para venda, para aluguel, ou para os dois.
@@ -185,6 +187,7 @@ contexto rápido.
   navegação entre elas).
 
 **Contratos**
+
 - Gerar um contrato de venda ou de locação em PDF, pronto pra baixar.
 - Gerar esse contrato já puxando os dados de um imóvel que já está
   cadastrado — sem digitar tudo de novo.
@@ -194,6 +197,7 @@ contexto rápido.
   de novo quando precisar.
 
 **Recebimentos**
+
 - Registrar, mês a mês, o recebimento do aluguel de um imóvel alugado.
 - Ver a linha do tempo de tudo que já recebeu daquele imóvel, com filtro por
   período (último mês, últimos 6 meses, último ano).
@@ -202,12 +206,14 @@ contexto rápido.
   informando só o mês e o valor.
 
 **Patrimônio**
+
 - Ver, num painel único, o valor total estimado de tudo que possui.
 - Ver quantos imóveis tem, e como eles se distribuem entre alugados,
   disponíveis, vendidos e indisponíveis.
 - Ver o rendimento de aluguel recente, de forma consolidada.
 
 **Perfil**
+
 - Ver e editar o próprio perfil (nome, telefone/WhatsApp, Instagram,
   TikTok), acessível pelo menu do usuário. O e-mail aparece como somente
   leitura, vindo da própria conta.
