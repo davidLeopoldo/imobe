@@ -4,7 +4,7 @@ import { criarClienteAction } from "./_actions/criar-cliente";
 
 export default function NovoClientePage() {
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Cadastrar cliente</CardTitle>

@@ -5,13 +5,17 @@ import { adicionarFotoAction } from "./_actions/adicionar-foto";
 
 export default function NovoImovelPage() {
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Cadastrar imóvel</CardTitle>
         </CardHeader>
         <CardContent>
-          <ImovelForm mode="criar" action={criarImovelAction} onUploadFoto={adicionarFotoAction} />
+          <ImovelForm
+            mode="criar"
+            action={criarImovelAction}
+            onUploadFoto={adicionarFotoAction}
+          />
         </CardContent>
       </Card>
     </div>

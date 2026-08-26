@@ -35,7 +35,9 @@ export default async function ImovelDetalhePage({
   }
 
   const { periodo: periodoParam, aviso } = await searchParams;
-  const periodo: PeriodoFiltro = PERIODOS_VALIDOS.includes(periodoParam as PeriodoFiltro)
+  const periodo: PeriodoFiltro = PERIODOS_VALIDOS.includes(
+    periodoParam as PeriodoFiltro
+  )
     ? (periodoParam as PeriodoFiltro)
     : "6meses";
 
@@ -45,14 +47,19 @@ export default async function ImovelDetalhePage({
   const fotos = await listarFotosDoImovelParaDetalhe(imovel.id);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       {aviso && <AvisoToast mensagem={aviso} />}
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="flex flex-wrap items-center gap-2">
-            <h1 className="text-2xl font-semibold tracking-tight">{imovel.endereco}</h1>
+            <h1 className="text-2xl font-semibold tracking-tight">
+              {imovel.endereco}
+            </h1>
             <StatusBadge status={imovel.status} />
-            <TipoImovelBadge paraVenda={imovel.para_venda} paraAluguel={imovel.para_aluguel} />
+            <TipoImovelBadge
+              paraVenda={imovel.para_venda}
+              paraAluguel={imovel.para_aluguel}
+            />
           </div>
           <p className="text-muted-foreground">
             {imovel.bairro}, {imovel.cidade}
@@ -75,22 +82,30 @@ export default async function ImovelDetalhePage({
           {imovel.para_venda && (
             <div>
               <p className="text-sm text-muted-foreground">Valor de venda</p>
-              <p className="font-medium">{formatCurrencyBRL(imovel.valor_venda)}</p>
+              <p className="font-medium">
+                {formatCurrencyBRL(imovel.valor_venda)}
+              </p>
             </div>
           )}
           {imovel.para_aluguel && (
             <div>
               <p className="text-sm text-muted-foreground">Valor de aluguel</p>
-              <p className="font-medium">{formatCurrencyBRL(imovel.valor_aluguel)}/mês</p>
+              <p className="font-medium">
+                {formatCurrencyBRL(imovel.valor_aluguel)}/mês
+              </p>
             </div>
           )}
           <div>
             <p className="text-sm text-muted-foreground">IPTU</p>
-            <p className="font-medium">{formatCurrencyBRL(imovel.valor_iptu)}</p>
+            <p className="font-medium">
+              {formatCurrencyBRL(imovel.valor_iptu)}
+            </p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Valor estimado</p>
-            <p className="font-medium">{formatCurrencyBRL(imovel.valor_estimado)}</p>
+            <p className="font-medium">
+              {formatCurrencyBRL(imovel.valor_estimado)}
+            </p>
           </div>
         </CardContent>
       </Card>

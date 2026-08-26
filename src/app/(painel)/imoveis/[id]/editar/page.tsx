@@ -28,7 +28,7 @@ export default async function EditarImovelPage({
   const action = atualizarImovelAction.bind(null, imovel.id);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Editar imóvel</CardTitle>

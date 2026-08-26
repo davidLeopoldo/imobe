@@ -27,13 +27,15 @@ export default async function NovoRecebimentoPage({
   }
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Registrar recebimento — {imovel.endereco}</CardTitle>
         </CardHeader>
         <CardContent>
-          <RecebimentoForm action={criarRecebimentoAction.bind(null, imovel.id)} />
+          <RecebimentoForm
+            action={criarRecebimentoAction.bind(null, imovel.id)}
+          />
         </CardContent>
       </Card>
     </div>

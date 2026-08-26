@@ -29,7 +29,7 @@ export default async function ClienteDetalhePage({
   const action = atualizarClienteAction.bind(null, cliente.id);
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-semibold tracking-tight">
           {cliente.nome}

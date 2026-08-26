@@ -29,7 +29,7 @@ export default async function NovoContratoVinculadoPage({
   ];
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Gerar contrato — {imovel.endereco}</CardTitle>

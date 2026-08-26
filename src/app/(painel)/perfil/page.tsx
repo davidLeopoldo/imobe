@@ -7,7 +7,7 @@ export default async function PerfilPage() {
   const { perfil, email } = await buscarDadosDoPerfil();
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Meu perfil</CardTitle>

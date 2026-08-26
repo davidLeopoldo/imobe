@@ -4,7 +4,7 @@ import { gerarContratoAvulsoAction } from "./_actions/gerar-contrato-avulso";
 
 export default function NovoContratoAvulsoPage() {
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <Card>
         <CardHeader>
           <CardTitle>Gerar contrato</CardTitle>

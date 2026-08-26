@@ -22,8 +22,12 @@ export default async function DashboardPage() {
     <div>
       <div className="flex flex-wrap items-start justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
-          <p className="mt-2 text-muted-foreground">Visão geral do seu patrimônio imobiliário.</p>
+          <h1 className="font-heading text-2xl font-semibold tracking-tight">
+            Dashboard
+          </h1>
+          <p className="mt-2 text-muted-foreground">
+            Visão geral do seu patrimônio imobiliário.
+          </p>
         </div>
         <RegistrarPagamentoDialog imoveis={imoveisAlugados} />
       </div>
@@ -75,7 +79,9 @@ export default async function DashboardPage() {
           <CardContent className="grid grid-cols-2 gap-2">
             {(Object.keys(STATUS_LABEL) as ImovelStatus[]).map((status) => (
               <div key={status}>
-                <p className="text-xs text-muted-foreground">{STATUS_LABEL[status]}</p>
+                <p className="text-xs text-muted-foreground">
+                  {STATUS_LABEL[status]}
+                </p>
                 <p className="font-medium">{resumo.porStatus[status]}</p>
               </div>
             ))}

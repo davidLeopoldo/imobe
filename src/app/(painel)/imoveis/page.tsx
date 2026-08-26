@@ -11,7 +11,9 @@ export default async function ImoveisPage() {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-semibold tracking-tight">Imóveis</h1>
+        <h1 className="font-heading text-2xl font-semibold tracking-tight">
+          Imóveis
+        </h1>
         <Link href="/imoveis/novo" className={buttonVariants()}>
           Cadastrar imóvel
         </Link>

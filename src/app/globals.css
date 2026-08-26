@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-fraunces);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -23,6 +23,14 @@
   --color-chart-3: var(--chart-3);
   --color-chart-2: var(--chart-2);
   --color-chart-1: var(--chart-1);
+  --color-status-success-bg: var(--status-success-bg);
+  --color-status-success-fg: var(--status-success-fg);
+  --color-status-alugado-bg: var(--status-alugado-bg);
+  --color-status-alugado-fg: var(--status-alugado-fg);
+  --color-status-vendido-bg: var(--status-vendido-bg);
+  --color-status-vendido-fg: var(--status-vendido-fg);
+  --color-status-indisponivel-bg: var(--status-indisponivel-bg);
+  --color-status-indisponivel-fg: var(--status-indisponivel-fg);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -49,24 +57,24 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  --background: oklch(0.985 0.006 38.3);
+  --foreground: oklch(0.18 0.012 38.3);
+  --card: oklch(0.985 0.006 38.3);
+  --card-foreground: oklch(0.18 0.012 38.3);
+  --popover: oklch(0.985 0.006 38.3);
+  --popover-foreground: oklch(0.18 0.012 38.3);
+  --primary: oklch(0.55 0.165 38.3);
+  --primary-foreground: oklch(0.98 0.006 38.3);
+  --secondary: oklch(0.97 0.01 38.3);
+  --secondary-foreground: oklch(0.28 0.03 38.3);
+  --muted: oklch(0.97 0.01 38.3);
+  --muted-foreground: oklch(0.552 0.03 38.3);
+  --accent: oklch(0.97 0.01 38.3);
+  --accent-foreground: oklch(0.28 0.03 38.3);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --border: oklch(0.9 0.012 38.3);
+  --input: oklch(0.9 0.012 38.3);
+  --ring: oklch(0.66 0.13 38.3);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -81,27 +89,35 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --status-success-bg: oklch(0.93 0.08 150);
+  --status-success-fg: oklch(0.38 0.14 150);
+  --status-alugado-bg: oklch(0.92 0.045 250);
+  --status-alugado-fg: oklch(0.38 0.12 250);
+  --status-vendido-bg: oklch(0.92 0.045 320);
+  --status-vendido-fg: oklch(0.38 0.12 320);
+  --status-indisponivel-bg: oklch(0.93 0.012 38.3);
+  --status-indisponivel-fg: oklch(0.42 0.018 38.3);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --background: oklch(0.19 0.012 38.3);
+  --foreground: oklch(0.96 0.006 38.3);
+  --card: oklch(0.24 0.012 38.3);
+  --card-foreground: oklch(0.96 0.006 38.3);
+  --popover: oklch(0.24 0.012 38.3);
+  --popover-foreground: oklch(0.96 0.006 38.3);
+  --primary: oklch(0.55 0.165 38.3);
+  --primary-foreground: oklch(0.98 0.006 38.3);
+  --secondary: oklch(0.27 0.014 38.3);
+  --secondary-foreground: oklch(0.94 0.008 38.3);
+  --muted: oklch(0.27 0.014 38.3);
+  --muted-foreground: oklch(0.72 0.02 38.3);
+  --accent: oklch(0.27 0.014 38.3);
+  --accent-foreground: oklch(0.94 0.008 38.3);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --ring: oklch(0.6 0.14 38.3);
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -115,6 +131,14 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  --status-success-bg: oklch(0.28 0.06 150);
+  --status-success-fg: oklch(0.88 0.1 150);
+  --status-alugado-bg: oklch(0.28 0.05 250);
+  --status-alugado-fg: oklch(0.88 0.1 250);
+  --status-vendido-bg: oklch(0.28 0.05 320);
+  --status-vendido-fg: oklch(0.88 0.1 320);
+  --status-indisponivel-bg: oklch(0.3 0.012 38.3);
+  --status-indisponivel-fg: oklch(0.85 0.014 38.3);
 }
 
 @layer base {

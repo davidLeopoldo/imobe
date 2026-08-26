@@ -33,14 +33,15 @@ export default async function ContratoDetalhePage({
   }
 
   return (
-    <div className="mx-auto max-w-2xl">
+    <div className="mx-auto max-w-4xl">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <h1 className="text-2xl font-semibold tracking-tight">
             Contrato de {TIPO_LABEL[contrato.tipo]}
           </h1>
           <p className="text-muted-foreground">
-            {contrato.imovel_endereco}, {contrato.imovel_bairro}, {contrato.imovel_cidade}
+            {contrato.imovel_endereco}, {contrato.imovel_bairro},{" "}
+            {contrato.imovel_cidade}
           </p>
         </div>
         {contrato.pdf_path && (
@@ -62,13 +63,19 @@ export default async function ContratoDetalhePage({
         <CardContent className="grid gap-3 sm:grid-cols-2">
           <div>
             <p className="text-sm text-muted-foreground">
-              {contrato.tipo === "locacao" ? "Valor do aluguel" : "Valor de venda"}
+              {contrato.tipo === "locacao"
+                ? "Valor do aluguel"
+                : "Valor de venda"}
             </p>
-            <p className="font-medium">{formatCurrencyBRL(contrato.imovel_valor)}</p>
+            <p className="font-medium">
+              {formatCurrencyBRL(contrato.imovel_valor)}
+            </p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Data do contrato</p>
-            <p className="font-medium">{formatDataBR(contrato.data_contrato)}</p>
+            <p className="font-medium">
+              {formatDataBR(contrato.data_contrato)}
+            </p>
           </div>
           {contrato.prazo_meses && (
             <div>
