@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { AuthSplitPanel } from "@/components/layout/auth-split-panel";
 import { LoginForm } from "./_components/login-form";
 
 export default async function LoginPage({
@@ -21,8 +22,11 @@ export default async function LoginPage({
       : undefined;
 
   return (
-    <div className="flex flex-1 items-center justify-center px-4 py-16">
+    <AuthSplitPanel
+      headline="Organize seus imóveis, contratos e patrimônio em um só lugar"
+      subtitle="O Immobiliare ajuda proprietários e corretores autônomos a cadastrar imóveis, gerar contratos e acompanhar o rendimento de aluguel sem depender de planilhas soltas."
+    >
       <LoginForm infoMessage={infoMessage} />
-    </div>
+    </AuthSplitPanel>
   );
 }

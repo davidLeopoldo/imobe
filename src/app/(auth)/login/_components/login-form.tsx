@@ -3,31 +3,40 @@
 import { useState, useTransition } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Field, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { signupSchema, type SignupFormValues } from "@/lib/validations/auth";
-import { signup } from "../_actions/signup";
+import { loginSchema, type LoginFormValues } from "@/lib/validations/auth";
+import { login } from "../_actions/login";
 
-export function SignupForm() {
+export function LoginForm({ infoMessage }: { infoMessage?: string }) {
   const [isPending, startTransition] = useTransition();
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const form = useForm<SignupFormValues>({
-    resolver: zodResolver(signupSchema),
-    defaultValues: { email: "", password: "", confirmPassword: "" },
+  const form = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: { email: "", password: "" },
   });
 
-  function onSubmit(values: SignupFormValues) {
+  function onSubmit(values: LoginFormValues) {
     setServerError(null);
     startTransition(async () => {
-      const result = await signup(values);
+      const result = await login(values);
       if (result?.message) {
         setServerError(result.message);
-        toast.error(result.message);
       }
     });
   }
@@ -35,27 +44,37 @@ export function SignupForm() {
   return (
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Criar conta</CardTitle>
-        <CardDescription>Cadastre-se para começar a organizar seus imóveis.</CardDescription>
+        <CardTitle>Entrar</CardTitle>
+        <CardDescription>
+          Acesse sua conta para gerenciar seus imóveis.
+        </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
+            {infoMessage && (
+              <p className="rounded-md bg-muted px-3 py-2 text-sm text-muted-foreground">
+                {infoMessage}
+              </p>
+            )}
+
             <Controller
               name="email"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="signup-email">E-mail</FieldLabel>
+                  <FieldLabel htmlFor="login-email">E-mail</FieldLabel>
                   <Input
                     {...field}
-                    id="signup-email"
+                    id="login-email"
                     type="email"
                     autoComplete="email"
                     aria-invalid={fieldState.invalid}
                     placeholder="voce@exemplo.com"
                   />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -65,33 +84,17 @@ export function SignupForm() {
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="signup-password">Senha</FieldLabel>
+                  <FieldLabel htmlFor="login-password">Senha</FieldLabel>
                   <Input
                     {...field}
-                    id="signup-password"
+                    id="login-password"
                     type="password"
-                    autoComplete="new-password"
+                    autoComplete="current-password"
                     aria-invalid={fieldState.invalid}
                   />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
-                </Field>
-              )}
-            />
-
-            <Controller
-              name="confirmPassword"
-              control={form.control}
-              render={({ field, fieldState }) => (
-                <Field data-invalid={fieldState.invalid}>
-                  <FieldLabel htmlFor="signup-confirm-password">Confirmar senha</FieldLabel>
-                  <Input
-                    {...field}
-                    id="signup-confirm-password"
-                    type="password"
-                    autoComplete="new-password"
-                    aria-invalid={fieldState.invalid}
-                  />
-                  {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
+                  {fieldState.invalid && (
+                    <FieldError errors={[fieldState.error]} />
+                  )}
                 </Field>
               )}
             />
@@ -103,7 +106,7 @@ export function SignupForm() {
             )}
 
             <Button type="submit" disabled={isPending} className="w-full">
-              {isPending ? "Criando conta..." : "Criar conta"}
+              {isPending ? "Entrando..." : "Entrar"}
             </Button>
           </FieldGroup>
         </form>
