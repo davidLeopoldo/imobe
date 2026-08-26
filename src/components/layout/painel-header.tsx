@@ -13,7 +13,7 @@ import { PainelMobileNav } from "./painel-mobile-nav";
 
 export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
   return (
-    <header className="border-b">
+    <header className="border-b border-sidebar-border bg-sidebar text-sidebar-foreground">
       <div className="flex h-16 items-center justify-between px-4 sm:px-6">
         <div className="flex items-center gap-2">
           <PainelMobileNav />
@@ -26,7 +26,7 @@ export function PainelHeader({ onLogout }: { onLogout: () => Promise<void> }) {
               alt=""
               width={28}
               height={28}
-              className="rounded-sm"
+              className="rounded-sm invert"
               priority
             />
             Immobiliare

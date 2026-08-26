@@ -22,9 +22,14 @@ export function PainelMobileNav() {
         <Menu className="size-5" />
         <span className="sr-only">Abrir menu de navegação</span>
       </SheetTrigger>
-      <SheetContent side="left">
+      <SheetContent
+        side="left"
+        className="border-sidebar-border bg-sidebar text-sidebar-foreground"
+      >
         <SheetHeader>
-          <SheetTitle>Immobiliare</SheetTitle>
+          <SheetTitle className="text-sidebar-foreground">
+            Immobiliare
+          </SheetTitle>
         </SheetHeader>
         <nav className="flex flex-col gap-1 px-4">
           {PAINEL_NAV_ITEMS.map(({ href, label, icon: Icon }) => (
@@ -34,7 +39,7 @@ export function PainelMobileNav() {
               render={
                 <Link
                   href={href}
-                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+                  className="flex items-center gap-2 rounded-md px-3 py-2 text-sm font-medium text-sidebar-foreground/70 transition-colors hover:bg-sidebar-accent hover:text-sidebar-accent-foreground"
                 />
               }
             >
